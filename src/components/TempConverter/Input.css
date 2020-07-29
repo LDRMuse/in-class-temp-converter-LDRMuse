@@ -1,7 +1,11 @@
 div {
   margin-top: 5rem;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
+}
+
+input {
+  background-color: pink;
+  color: black;
+  border-radius: 50px;
 }

@@ -6,8 +6,8 @@ import './Input.css'
 //functional component
 export const Input = (props) => (
   <div>
-    <label>{props.label}</label>
-    <input id={props.id} />
+    <label> </label>
+    <input placeholder={props.label} id={props.id} />
   </div>
   )
 
