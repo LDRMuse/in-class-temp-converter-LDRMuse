@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './Input.css'
+
 
 //functional component
 export const Input = (props) => (
