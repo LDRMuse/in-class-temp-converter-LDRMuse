@@ -1,14 +1,24 @@
 import React, { Fragment } from "react"
 
-import {Input} from './Input'
+import { Input } from "./Input"
 
 export class TempConverter extends React.Component {
-render() {
-  return (
-  <Fragment>
-    <p>Temp converter</p>
-    <Input />
-    </Fragment>
+  inputs = [
+    {
+      label: "°C",
+      id: "celsius"
+    },
+    {
+      label: "°F",
+      id: "fahrenheit"
+    }
+  ]
+
+  renderInputs = () => this.inputs.map(({id, label}) => <Input label={label} id={id} key={id} />)
+
+  render() {
+    return (
+      this.renderInputs()
     )
   }
 }
