@@ -10,8 +10,6 @@ const converters = {
 }
 
 
-
-
 export default (temperature, conversion) => {
   const input = parseFloat(temperature);
   if (Number.isNaN(input)) {
