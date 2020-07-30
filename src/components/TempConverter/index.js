@@ -14,7 +14,12 @@ export class TempConverter extends React.Component {
     }
   ]
 
-  renderInputs = () => this.inputs.map(({id, label}) => <Input label={label} id={id} key={id} />)
+  inputHandler = ({target}) => {
+    // TODO: Look at other props of the target to determine whether we need to convert C or F
+  }
+
+  renderInputs = () =>
+    this.inputs.map(({id, label}) => <Input label={label} id={id} handler={this.inputHandler} key={id} />)
 
   render() {
     return (

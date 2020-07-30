@@ -4,14 +4,18 @@ import './Input.css'
 
 
 //functional component
-export const Input = (props) => (
-  <div>
-    <label> </label>
-    <input placeholder={props.label} id={props.id} />
+export const Input = ({label, id, handler}) => {
+  const handleChange = (event) => {
+    handler(event)
+  }
+  return <div>
+    <label>{label}</label>
+    <input placeholder={label} id={id} onChange={handleChange}/>
   </div>
-  )
+}
 
 Input.propTypes = {
+  handler: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 }
