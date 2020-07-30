@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 
 import { Input } from "./Input"
+import tempConverter from 'lib'
 
 export class TempConverter extends React.Component {
   inputs = [
