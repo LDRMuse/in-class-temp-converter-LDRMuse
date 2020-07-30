@@ -1,46 +1,46 @@
-import React, { Fragment } from "react"
+import React, { useState } from "react"
 
 import { Input } from "./Input"
+
 import tempConverter from 'lib'
 
-export class TempConverter extends React.Component {
+export const TempConverter = () => {
+  const [celsius, setCelsius] = useState(0)
+  const [fahrenheit, setFahrenheit] = useState(0)
 
-  state = {
-    celsius: 0,
-    fahrenheit: 0
-  }
-
-  inputs = [
+  const inputs = [
     {
       label: "°C",
-      id: "celsius"
+      id: "celsius",
+      value: celsius
     },
     {
       label: "°F",
-      id: "fahrenheit"
+      id: "fahrenheit",
+      value: fahrenheit
     }
   ]
 
-  inputHandler = ({target}) => {
-  if (target.id === 'celsius') {
-    this.setState({
-      celsius: Number(target.value),
-      fahrenheit: tempConverter(target.value, "toFahrenheit") })
-  } else {
-  this.setState({
-    fahrenheit: Number(target.value),
-    celsius: tempConverter(target.value, "toCelsius")
-
-  })
+  const inputHandler = ({ target }) => {
+    if (target.id === 'celsius') {
+      setCelsius(Number(target.value))
+      setFahrenheit(tempConverter(target.value, "toFahrenheit"))
+    } else {
+      setFahrenheit(Number(target.value))
+      setCelsius(tempConverter(target.value, "toCelsius"))
+    }
   }
-}
 
-  renderInputs = () =>
-    this.inputs.map(({id, label}) => <Input label={label} id={id} handler={this.inputHandler} value={this.state[id]} key={id} />)
+  const renderInputs = () =>
+    inputs.map(({ id, label, value }) => (
+      <Input label={label} id={id}
+        handler={inputHandler}
+        value={value} key={id} />
+    ))
 
-  render() {
-    return (
-      this.renderInputs()
-    )
-  }
+
+  return (
+    <main>{renderInputs()}</main>
+  )
+
 }
